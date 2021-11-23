@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
+import model.UserDetails;
 import service.RegistrationService;
 
 
@@ -32,20 +33,13 @@ public class RegistrationController extends HttpServlet {
 		
 		System.out.println("Welcome to doPost method!");
 		
-		String realName = request.getParameter("realName");
-		String lastName = request.getParameter("lastName");
-		String country = request.getParameter("country");
-		String city = request.getParameter("city");
-		String street = request.getParameter("street");
-		String phoneNumber = request.getParameter("number");
 		String username = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String repeatedPassword = request.getParameter("repeatedPassword");
 		String userType = request.getParameter("userType");
 		
 		
-		service.writeParameters(realName, lastName, country, city, street, phoneNumber,
-								username, password, repeatedPassword, userType);
+		service.writeParameters(username, password, repeatedPassword, userType);
 		
 		
 		boolean checkPassword = service.checkPassword(password, repeatedPassword);

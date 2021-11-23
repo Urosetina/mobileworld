@@ -10,16 +10,17 @@ public class Phone {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String phoneId;
+	private int phoneId;
 	private String manufacturer;
 	private String model;
 	private double price;
 	
 	
-	public String getPhoneId() {
+	
+	public int getPhoneId() {
 		return phoneId;
 	}
-	public void setPhoneId(String phoneId) {
+	public void setPhoneId(int phoneId) {
 		this.phoneId = phoneId;
 	}
 	public String getManufacturer() {

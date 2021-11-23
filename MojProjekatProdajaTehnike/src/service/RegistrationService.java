@@ -4,6 +4,7 @@ import common.CommonMethods;
 import dao.RegistrationLoginDao;
 import validation.Validation;
 import model.User;
+import model.UserDetails;
 
 
 public class RegistrationService {
@@ -12,13 +13,10 @@ public class RegistrationService {
 	CommonMethods methods = new CommonMethods();
 	RegistrationLoginDao dao = new RegistrationLoginDao();
 	
-	public void writeParameters(String realName, String lastName, String country,
-								String city, String street, String phoneNumber, String username,
-								String password, String repeatedPassword, String userType) {
+	public void writeParameters(String username, String password, String repeatedPassword, String userType) {
 		
 		
-		val.writeParameters(realName, lastName, country, city, street, phoneNumber,
-							username, password, repeatedPassword, userType);
+		val.writeParameters(username, password, repeatedPassword, userType);
 	}
 
 	public boolean checkPassword(String password, String repeatedPassword) {
@@ -36,6 +34,8 @@ public class RegistrationService {
 		
 		return dao.addUser(user);
 	}
+
+	
 	
 	
 	

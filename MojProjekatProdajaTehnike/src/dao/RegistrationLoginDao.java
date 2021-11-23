@@ -19,8 +19,8 @@ public class RegistrationLoginDao {
 		
 		try {
 			
-			session.save(user);
 			
+			session.save(user);
 			
 			session.getTransaction().commit();
 				System.out.println("User with username: " + user.getUsername() + " is added to the Database!");

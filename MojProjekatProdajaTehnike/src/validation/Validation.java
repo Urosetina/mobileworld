@@ -2,18 +2,10 @@ package validation;
 
 public class Validation {
 
-	public void writeParameters(String realName, String lastName, String country,
-								String city, String street, String phoneNumber, String username,
-								String password, String repeatedPassword, String userType) {
+	public void writeParameters(String username, String password, String repeatedPassword, String userType) {
 		
 		
 		System.out.println("Our parameters are: ");
-		System.out.println("Real name: " + realName);
-		System.out.println("Last name: " + lastName);
-		System.out.println("Country: " + country);
-		System.out.println("City: " + city);
-		System.out.println("Street:" + street);
-		System.out.println("Phone number: " + phoneNumber);
 		System.out.println("Username: " + username);
 		System.out.println("Password: " + password);
 		System.out.println("Repeated Password: " + repeatedPassword);
@@ -75,6 +67,25 @@ public class Validation {
 		
 		
 	
+	}
+
+	public boolean validateUser(String userName, String password) {
+		
+		if((userName == null || userName.isEmpty()) || (password == null || password.isEmpty())){
+			
+			System.out.println("Password or Username is empty or null!");
+			
+			return false;
+			
+		} else {
+			
+			System.out.println("Username and password match the requirements!");
+			
+			return true;
+		}
+		
+		
+		
 	}
 	
 	
