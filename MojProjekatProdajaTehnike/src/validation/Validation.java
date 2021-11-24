@@ -62,34 +62,24 @@ public class Validation {
 	}
 	
 	
-		
-	
-		
-		
-	
-	}
+}
 
-	public boolean validateUser(String userName, String password) {
+
+	public boolean validateUserAndPassword(String userName, String password) {
 		
-		if((userName == null || userName.isEmpty()) || (password == null || password.isEmpty())){
+		if((userName == null || userName.isEmpty()) || (password == null || password.isEmpty())) {
 			
-			System.out.println("Password or Username is empty or null!");
-			
-			return false;
+			System.out.println("Username or password are empty or null!");
+				return false;
 			
 		} else {
 			
-			System.out.println("Username and password match the requirements!");
-			
-			return true;
+			System.out.println("Username and password are not empty or null!");
+				return true;
 		}
-		
-		
+	
 		
 	}
-	
-	
-	
 	
 	
 	

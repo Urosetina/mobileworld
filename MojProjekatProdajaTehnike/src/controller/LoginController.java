@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.User;
+import model.UserType;
 import service.LoginService;
 
 
@@ -27,26 +29,50 @@ public class LoginController extends HttpServlet {
 		
 		// Validation: Both user and password must be filled (not null)
 			
-			boolean areUserAndPassNull = service.validateUser(userName, password);
 			
-			if(!areUserAndPassNull) {
-				
-				response.sendRedirect("");
-				
-			} else {
-				
-				response.sendRedirect("");
-			}
-			
-				
+			boolean areUserOrPassEmptyOrNull = service.validateUserAndPassword(userName, password);
 			
 			
 			
 		// Search through database and check if user exists
 			
+			User user = service.findUserByUsernameAndPassword(userName, password);
+			
+			if(user == null) {
+				
+				response.sendRedirect("html/logFailed.html");
+				
+			} else {
+				
+				// If user exists, return user and redirect to their page
+				if(user.getUserType().equals(UserType.BUYER)) {
+					
+					// switch over to buyer page
+				response.sendRedirect("jsp/buyer.jsp");	
+					
+					
+					
+				} else if (user.getUserType().equals(UserType.SELLER)) {
+					
+					// switch over to seller page
+					
+					response.sendRedirect("jsp/seller.jsp");
+					
+				} else {
+					
+					/* if other, switch over to admin page
+					 * No other enums besides
+					 * BUYER, SELLER, ADMIN
+					 */
+					
+					response.sendRedirect("jsp/admin.jsp");
+				}
+				
+				
+			}
 			
 			
-		// If user exists, return user and redirect to their page
+		
 		
 		
 		

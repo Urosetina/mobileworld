@@ -2,6 +2,7 @@ package service;
 
 import common.CommonMethods;
 import dao.RegistrationLoginDao;
+import model.User;
 import validation.Validation;
 
 public class LoginService {
@@ -16,11 +17,19 @@ public class LoginService {
 		methods.writeParameters(userName, password);
 	}
 
-	public boolean validateUser(String userName, String password) {
+
+	public User findUserByUsernameAndPassword(String userName, String password) {
 		
 		
 		
-		return v.validateUser(userName, password);
+		return dao.findUserByUsernameAndPassword(userName, password);
+	}
+
+	
+
+	public boolean validateUserAndPassword(String userName, String password) {
+		
+		return v.validateUserAndPassword(userName, password);
 	}
 
 	
