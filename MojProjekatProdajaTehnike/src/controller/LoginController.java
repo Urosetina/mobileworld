@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.User;
 import model.UserType;
@@ -38,11 +39,17 @@ public class LoginController extends HttpServlet {
 			
 			User user = service.findUserByUsernameAndPassword(userName, password);
 			
-			if(user == null) {
+			if(user == null && !areUserOrPassEmptyOrNull) {
 				
 				response.sendRedirect("html/logFailed.html");
 				
 			} else {
+				
+				// Add user in http session object
+				HttpSession session = request.getSession();
+					session.setAttribute("user", user);
+					
+					
 				
 				// If user exists, return user and redirect to their page
 				if(user.getUserType().equals(UserType.BUYER)) {

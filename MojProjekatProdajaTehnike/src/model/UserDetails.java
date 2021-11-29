@@ -20,7 +20,7 @@ public class UserDetails {
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;
-	private double balance;
+	private double balance = 0;
 	@OneToOne
 	private User user;
 	@OneToMany(fetch = FetchType.LAZY)

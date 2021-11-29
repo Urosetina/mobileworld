@@ -2,6 +2,9 @@ package validation;
 
 public class Validation {
 
+	
+
+
 	public void writeParameters(String username, String password, String repeatedPassword, String userType) {
 		
 		
@@ -80,6 +83,43 @@ public class Validation {
 	
 		
 	}
+
+	public boolean isBalanceADigit(String balance) {
+		
+		
+		int balanceLength = balance.length();
+		int digitCounter = 0;
+		int letterCounter = 0;
+		
+		for(int i = 0; i < balanceLength; i++) {
+			
+			char character = balance.charAt(i);
+			
+			if(Character.isDigit(character)) {
+				
+				digitCounter++;
+			}
+			
+			if(Character.isLetter(character)) {
+				
+				letterCounter++;
+			}
+		}
+		
+		if(digitCounter >= 0 && letterCounter == 0) {
+			
+			return true;
+			
+		} else {
+			
+			return false;
+		}
+		
+	}
+
+	
+
+	
 	
 	
 	

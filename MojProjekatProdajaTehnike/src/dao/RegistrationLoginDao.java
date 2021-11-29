@@ -1,6 +1,7 @@
 package dao;
 
 import model.User;
+import model.UserDetails;
 
 import javax.persistence.Query;
 
@@ -16,6 +17,10 @@ public class RegistrationLoginDao {
 	
 	public boolean addUser(User user) {
 		
+		UserDetails details = new UserDetails();
+		details.setUser(user);
+		
+		
 		Session session = sf.openSession();
 		session.beginTransaction();
 		
@@ -23,6 +28,7 @@ public class RegistrationLoginDao {
 			
 			
 			session.save(user);
+			session.save(details);
 			
 			session.getTransaction().commit();
 				System.out.println("User with username: " + user.getUsername() + " is added to the Database!");
