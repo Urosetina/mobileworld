@@ -22,27 +22,32 @@ public class BalanceController extends HttpServlet {
 		String username = request.getParameter("username");
 		String balance = request.getParameter("balance");
 		
-		Double balanceForInsert = Double.parseDouble(balance);
+		
 		
 		// Find user with requested user name above and do they exist;
 		
 		User user = service.returnUserByUsername(username);
 		
-		// Validate if balance written by admin are digits;
-		
-		boolean isBalanceDigit = service.isBalanceADigit(balance);
 	
-		
 		if(user != null) {
 		
-			// If everything checks and user is found, add balance to requested user name;
+			// Check if written balance by admin is not a string;
+			boolean isBalanceDigit = service.isBalanceADigit(balance);
 			
+			Double balanceForInsert = null;
+			
+			if(isBalanceDigit) {
+				
+				 balanceForInsert = Double.parseDouble(balance);	
+			}
+			
+			
+			
+			// Check if balance was added
 			boolean isBalanceAdded = service.addBalance(user, balanceForInsert);
 			
 			
-			
-			
-			if(isBalanceAdded && isBalanceDigit == true) {
+			if(isBalanceAdded) {
 				
 				// If balance is added, redirect to main admin page;
 				

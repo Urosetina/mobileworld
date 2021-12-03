@@ -39,6 +39,8 @@ public class LoginController extends HttpServlet {
 			
 			User user = service.findUserByUsernameAndPassword(userName, password);
 			
+			
+				
 			if(user == null && !areUserOrPassEmptyOrNull) {
 				
 				response.sendRedirect("html/logFailed.html");
@@ -77,10 +79,6 @@ public class LoginController extends HttpServlet {
 				
 				
 			}
-			
-			
-		
-		
 		
 		
 		

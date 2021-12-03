@@ -71,12 +71,10 @@ public class BalanceDao {
 				System.out.println("UserDetails found!");
 				
 					
-					details.setBalance(details.getBalance() + balance);
-					details.setBalance(balance);
+				details.setBalance(details.getBalance() + balance);
+				
 		
 				
-				
-			
 				session.getTransaction().commit();
 					return true;
 			

@@ -10,8 +10,6 @@
 </head>
 	<body>
 	
-	<a href = "jsp/admin.jsp">Back to Admin page</a>
-	
 	
 	
 	<p>Form for searching every registered user:</p>
@@ -70,7 +68,9 @@
 	
 	<br> <br>
 	
-	<a href = "jsp/admin.jsp">Back to Admin page</a>
+	<a href = "admin.jsp">Back to Admin page</a>
+	<br> <br>
+	<a href = "jsp/admin.jsp">Back to admin page after results</a>
 	
 	
 	

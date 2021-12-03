@@ -35,6 +35,25 @@ public class CommonMethods {
 		
 	}
 
+	public UserType returnUserType(String userType) {
+		
+		UserType type = null;
+		
+		if(userType.equals("buyer")) {
+			
+			type = UserType.BUYER;
+			
+		} else if(userType.equals("seller")) {
+			
+			type = UserType.SELLER;
+			
+		} 
+		
+		return type;
+		
+		
+	}
+
 	
 
 }

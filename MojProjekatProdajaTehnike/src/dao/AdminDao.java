@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import model.User;
+import model.UserType;
 
 public class AdminDao {
 
@@ -48,6 +49,52 @@ public class AdminDao {
 		
 		
 	}
+
+	public List<User> returnUserByType(UserType type) {
+		
+		List<User> users = new ArrayList();
+		
+		Session session = sf.openSession();
+		session.beginTransaction();
+		
+		try {
+			
+			String hql = "from User ";
+			
+			if(type != null) {
+				
+				hql += "where userType = :type";
+			}
+			
+			System.out.println("hql: " + hql);
+			Query query = session.createQuery(hql);
+				
+			if(type != null) {
+				
+				query.setParameter("type", type);
+			}
+			
+			users = (List<User>)query.getResultList();
+			
+			session.getTransaction().commit();
+				return users;
+			
+		} catch(Exception e) {
+			
+			System.out.println("Couldn't return users!");
+				e.printStackTrace();
+			
+			session.getTransaction().rollback();
+				return null;
+			
+		} finally {
+			
+			session.close();
+		}
+		
+	}
+
+	
 	
 	
 	
